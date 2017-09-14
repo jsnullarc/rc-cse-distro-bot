@@ -22,8 +22,6 @@ module CseDistroBot
         response = "<@#{data.user}>, you are already in the roster"
       else
         cses << data.user
-        cses << data.user
-        cses << data.user
       end
 
       client.say(channel: data.channel, text: response)
