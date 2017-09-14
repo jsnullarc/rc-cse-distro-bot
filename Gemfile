@@ -1,10 +1,12 @@
 source 'https://rubygems.org'
 
+ruby '2.4.0'
 gem 'slack-ruby-bot'
 gem 'puma'
 gem 'sinatra'
 gem 'dotenv'
 gem 'celluloid-io'
+gem 'foreman'
 
 group :development, :test do
   gem 'rake'
