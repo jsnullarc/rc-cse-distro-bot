@@ -13,3 +13,5 @@ SlackRubyBot::Client.logger.level = Logger::WARN
 SlackRubyBot.configure do |config|
   config.logger = Logger.new("logs/bot.log", "daily")
 end
+
+foreman start
