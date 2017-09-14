@@ -121,7 +121,7 @@ module CseDistroBot
         desc "Once you need me to distribute again, just unmute me. Don't forget to utilize the `start with me` command if necessary."
       end
 
-      command 'remove from roster:[index]'
+      command 'remove from roster:[index]' do
         desc "Remove a specific user from the roster using their index listed in `list roster`"
       end
     end
