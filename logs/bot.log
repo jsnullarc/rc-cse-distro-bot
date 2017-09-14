@@ -1,0 +1,48 @@
+# Logfile created on 2017-09-15 03:37:25 +0800 by logger.rb/56815
+E, [2017-09-15T03:37:26.786646 #63889] ERROR -- : invalid_auth (Slack::Web::Api::Errors::SlackError)
+/Users/jsnulla/.rvm/gems/ruby-2.4.0/gems/slack-ruby-client-0.9.1/lib/slack/web/faraday/response/raise_error.rb:12:in `on_complete'
+/Users/jsnulla/.rvm/gems/ruby-2.4.0/gems/faraday-0.13.1/lib/faraday/response.rb:9:in `block in call'
+/Users/jsnulla/.rvm/gems/ruby-2.4.0/gems/faraday-0.13.1/lib/faraday/response.rb:61:in `on_complete'
+/Users/jsnulla/.rvm/gems/ruby-2.4.0/gems/faraday-0.13.1/lib/faraday/response.rb:8:in `call'
+/Users/jsnulla/.rvm/gems/ruby-2.4.0/gems/faraday-0.13.1/lib/faraday/response.rb:8:in `call'
+/Users/jsnulla/.rvm/gems/ruby-2.4.0/gems/faraday-0.13.1/lib/faraday/request/url_encoded.rb:15:in `call'
+/Users/jsnulla/.rvm/gems/ruby-2.4.0/gems/faraday-0.13.1/lib/faraday/request/multipart.rb:15:in `call'
+/Users/jsnulla/.rvm/gems/ruby-2.4.0/gems/faraday-0.13.1/lib/faraday/rack_builder.rb:141:in `build_response'
+/Users/jsnulla/.rvm/gems/ruby-2.4.0/gems/faraday-0.13.1/lib/faraday/connection.rb:387:in `run_request'
+/Users/jsnulla/.rvm/gems/ruby-2.4.0/gems/faraday-0.13.1/lib/faraday/connection.rb:174:in `post'
+/Users/jsnulla/.rvm/gems/ruby-2.4.0/gems/slack-ruby-client-0.9.1/lib/slack/web/faraday/request.rb:25:in `request'
+/Users/jsnulla/.rvm/gems/ruby-2.4.0/gems/slack-ruby-client-0.9.1/lib/slack/web/faraday/request.rb:10:in `post'
+/Users/jsnulla/.rvm/gems/ruby-2.4.0/gems/slack-ruby-client-0.9.1/lib/slack/web/api/endpoints/rtm.rb:18:in `rtm_connect'
+/Users/jsnulla/.rvm/gems/ruby-2.4.0/gems/slack-ruby-client-0.9.1/lib/slack/real_time/client.rb:110:in `build_socket'
+/Users/jsnulla/.rvm/gems/ruby-2.4.0/gems/slack-ruby-client-0.9.1/lib/slack/real_time/client.rb:50:in `start!'
+/Users/jsnulla/.rvm/gems/ruby-2.4.0/gems/slack-ruby-bot-0.10.4/lib/slack-ruby-bot/server.rb:37:in `start!'
+/Users/jsnulla/.rvm/gems/ruby-2.4.0/gems/slack-ruby-bot-0.10.4/lib/slack-ruby-bot/server.rb:29:in `block (2 levels) in run'
+/Users/jsnulla/.rvm/gems/ruby-2.4.0/gems/slack-ruby-bot-0.10.4/lib/slack-ruby-bot/server.rb:69:in `handle_exceptions'
+/Users/jsnulla/.rvm/gems/ruby-2.4.0/gems/slack-ruby-bot-0.10.4/lib/slack-ruby-bot/server.rb:27:in `block in run'
+/Users/jsnulla/.rvm/gems/ruby-2.4.0/gems/slack-ruby-bot-0.10.4/lib/slack-ruby-bot/server.rb:26:in `loop'
+/Users/jsnulla/.rvm/gems/ruby-2.4.0/gems/slack-ruby-bot-0.10.4/lib/slack-ruby-bot/server.rb:26:in `run'
+/Users/jsnulla/.rvm/gems/ruby-2.4.0/gems/slack-ruby-bot-0.10.4/lib/slack-ruby-bot/bot.rb:6:in `run'
+config.ru:13:in `block (2 levels) in <main>'
+I, [2017-09-15T03:41:24.136755 #64265]  INFO -- : Successfully connected team Anafore (T0L8N84PQ) to https://anafore.slack.com.
+I, [2017-09-15T04:07:21.856469 #65659]  INFO -- : Successfully connected team Anafore (T0L8N84PQ) to https://anafore.slack.com.
+I, [2017-09-15T04:09:16.132616 #65764]  INFO -- : Successfully connected team Anafore (T0L8N84PQ) to https://anafore.slack.com.
+I, [2017-09-15T04:14:08.080584 #65992]  INFO -- : Successfully connected team Anafore (T0L8N84PQ) to https://anafore.slack.com.
+I, [2017-09-15T04:17:39.136081 #66143]  INFO -- : Successfully connected team Anafore (T0L8N84PQ) to https://anafore.slack.com.
+I, [2017-09-15T04:25:54.437064 #66494]  INFO -- : Successfully connected team Anafore (T0L8N84PQ) to https://anafore.slack.com.
+I, [2017-09-15T04:27:08.362543 #66563]  INFO -- : Successfully connected team Anafore (T0L8N84PQ) to https://anafore.slack.com.
+I, [2017-09-15T04:28:50.358247 #66652]  INFO -- : Successfully connected team Anafore (T0L8N84PQ) to https://anafore.slack.com.
+I, [2017-09-15T04:30:15.605454 #66741]  INFO -- : Successfully connected team Anafore (T0L8N84PQ) to https://anafore.slack.com.
+I, [2017-09-15T04:32:52.535758 #66864]  INFO -- : Successfully connected team Anafore (T0L8N84PQ) to https://anafore.slack.com.
+I, [2017-09-15T04:33:45.955156 #66917]  INFO -- : Successfully connected team Anafore (T0L8N84PQ) to https://anafore.slack.com.
+I, [2017-09-15T04:34:25.509921 #66969]  INFO -- : Successfully connected team Anafore (T0L8N84PQ) to https://anafore.slack.com.
+I, [2017-09-15T04:37:41.915304 #67122]  INFO -- : Successfully connected team Anafore (T0L8N84PQ) to https://anafore.slack.com.
+I, [2017-09-15T04:38:09.357928 #67164]  INFO -- : Successfully connected team Anafore (T0L8N84PQ) to https://anafore.slack.com.
+I, [2017-09-15T04:40:18.996415 #67281]  INFO -- : Successfully connected team Anafore (T0L8N84PQ) to https://anafore.slack.com.
+I, [2017-09-15T04:41:38.499837 #67355]  INFO -- : Successfully connected team Anafore (T0L8N84PQ) to https://anafore.slack.com.
+I, [2017-09-15T04:42:37.895821 #67415]  INFO -- : Successfully connected team Anafore (T0L8N84PQ) to https://anafore.slack.com.
+I, [2017-09-15T04:43:27.208524 #67473]  INFO -- : Successfully connected team Anafore (T0L8N84PQ) to https://anafore.slack.com.
+I, [2017-09-15T04:44:39.266301 #67544]  INFO -- : Successfully connected team Anafore (T0L8N84PQ) to https://anafore.slack.com.
+I, [2017-09-15T04:45:09.711549 #67579]  INFO -- : Successfully connected team Anafore (T0L8N84PQ) to https://anafore.slack.com.
+I, [2017-09-15T04:45:40.431150 #67619]  INFO -- : Successfully connected team Anafore (T0L8N84PQ) to https://anafore.slack.com.
+I, [2017-09-15T04:46:25.202131 #67660]  INFO -- : Successfully connected team Anafore (T0L8N84PQ) to https://anafore.slack.com.
+I, [2017-09-15T04:47:04.604787 #67708]  INFO -- : Successfully connected team Anafore (T0L8N84PQ) to https://anafore.slack.com.

@@ -4,12 +4,13 @@ module CseDistroBot
   class Bot < SlackRubyBot::Bot
     cses = []
     current_robin_index = 0
+    muted = false
 
     command 'list roster' do |client, data, match|
       response = 'There are currently no CSEs in the roster'
       if cses.size.nonzero?
-        list = cses.map { |cse| "<@#{cse}>, " }
-        response = "The current CSE roster is: #{list.join(', ')}"
+        list = cses.each_with_index.map { |cse, index| "<@#{cse}> [index: #{index}]" }
+        response = "The current CSE roster is: #{list.join(' | ')}"
       end
 
       client.say(channel: data.channel, text: response)
@@ -21,6 +22,8 @@ module CseDistroBot
         response = "<@#{data.user}>, you are already in the roster"
       else
         cses << data.user
+        cses << data.user
+        cses << data.user
       end
 
       client.say(channel: data.channel, text: response)
@@ -30,6 +33,23 @@ module CseDistroBot
       cses = []
       cses << data.user
       client.say(channel: data.channel, text: "I've cleared out the roster list and added you as a member, <@#{data.user}>")
+    end
+
+    command 'clear roster' do |client, data, match|
+      cses = []
+      client.say(channel: data.channel, text: "I've cleared out the roster list, the roster has NO MEMBERS. Please add one for distro")
+    end
+
+    match /remove from roster:(?<index>\d*)/ do |client, data, match|
+      cse_index = match[:index].to_i
+      if cse_index < cses.size
+        user = cses[cse_index]
+        cses.delete_at(cse_index)
+
+        client.say(channel: data.channel, text: "I removed <@#{user}> from the roster")
+      else
+        client.say(channel: data.channel, text: "Uhmm.. that index doesn't exist. Hehe.. :sweat_smile:")
+      end
     end
 
     command 'start with me' do |client, data, match|
@@ -43,17 +63,67 @@ module CseDistroBot
       client.say(channel: data.channel, text: "K. Our rounds will now start with <@#{data.user}>")
     end
 
+    command 'mute' do |client, data, match|
+      muted = true
+
+      client.say(channel: data.channel, text: "Okay.. :( I won't distribute anymore.. Please unmute me later..")
+    end
+
+    command 'unmute' do |client, data, match|
+      muted = false
+
+      client.say(channel: data.channel, text: "Yes! Please update my circulation by saying `@cse_distro_bot start with me`!")
+    end
+
     match /^Open email case from .+#(?<case_no>\w*)/ do |client, data, match|
-      cse_to_handle = "<@#{cses[current_robin_index]}>"
-      if (current_robin_index + 1) < cses.size
-        current_robin_index = current_robin_index + 1
-      else
-        current_robin_index = 0
+      if muted == false
+        if cses.size.zero?
+          cse_to_handle = "Someone here"
+        else
+          cse_to_handle = "<@#{cses[current_robin_index]}>"
+        end
+
+        client.say(channel: data.channel, text: "#{cse_to_handle} please own this case: https://referralcandy.desk.com/agent/case/#{match[:case_no]}")
+
+        if (current_robin_index + 1) < cses.size
+          current_robin_index = current_robin_index + 1
+        else
+          current_robin_index = 0
+        end
+      end
+    end
+
+    help do
+      title 'CSE Distro Bot'
+      desc 'This bot helps us CSEs distribute the cases in a round-robin fashion. If you have any suggestions, recommendations, or bug reports, please ping Jason.'
+
+      command 'list roster' do
+        desc 'View the current CSE roster that will be handling cases'
       end
 
-      cse_to_handle = 'Someone <@here>' if cses.size.zero?
+      command 'let me join' do
+        desc "Mention me with this command and I'll add you to the current roster."
+      end
 
-      client.say(channel: data.channel, text: "#{cse_to_handle} (#{current_robin_index}) please own this case: https://referralcandy.desk.com/agent/case/#{match[:case_no]}")
+      command 'reset roster' do
+        desc 'Clear the roster and add yourself automatically. Useful when everyone else is on leave.'
+      end
+
+      command 'start with me' do
+        desc "Tells me to start the circulation from you."
+      end
+
+      command 'mute' do
+        desc "If you do not need me to distribute, just say this to me"
+      end
+
+      command 'unmute' do
+        desc "Once you need me to distribute again, just unmute me. Don't forget to utilize the `start with me` command if necessary."
+      end
+
+      command 'remove from roster:[index]'
+        desc "Remove a specific user from the roster using their index listed in `list roster`"
+      end
     end
   end
 end
