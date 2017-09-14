@@ -52,6 +52,17 @@ module CseDistroBot
       end
     end
 
+    match /start with:(?<index>\d*)/ do |client, data, match|
+      cse_index = match[:index].to_i
+      if cse_index < cses.size
+        current_robin_index = cse_index
+
+        client.say(channel: data.channel, text: "K. Our rounds will now start from <@#{cses[cse_index]}>")
+      else
+        client.say(channel: data.channel, text: "Uhmm.. that index doesn't exist. Hehe.. :sweat_smile:")
+      end
+    end
+
     command 'start with me' do |client, data, match|
       cses.each_with_index do |cse, index|
         if cse == cses[current_robin_index]
@@ -60,7 +71,15 @@ module CseDistroBot
         end
       end
 
-      client.say(channel: data.channel, text: "K. Our rounds will now start with <@#{data.user}>")
+      client.say(channel: data.channel, text: "K. Our rounds will now start from <@#{data.user}>")
+    end
+
+    command 'next cse' do |client, data, match|
+      if (current_robin_index + 1) < cses.size
+          client.say(channel: data.channel, text: "Next case will be assigned to <@#{cses[current_robin_index + 1]}>")
+        else
+          client.say(channel: data.channel, text: "Next case will be assigned to <@#{cses[0]}>")
+        end
     end
 
     command 'mute' do |client, data, match|
@@ -109,8 +128,16 @@ module CseDistroBot
         desc 'Clear the roster and add yourself automatically. Useful when everyone else is on leave.'
       end
 
+      command 'next cse' do
+        desc "I'll tell you who the next case will be assigned to"
+      end
+
       command 'start with me' do
         desc "Tells me to start the circulation from you."
+      end
+
+      command 'start with:[index]' do
+        desc "Tells me to start the circulation from the selected roster member index."
       end
 
       command 'mute' do
